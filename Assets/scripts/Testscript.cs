@@ -24,7 +24,6 @@ public class MultiObjectController : MonoBehaviour
 
         Vector3 movement = new Vector3(moveX, moveY, 0f) * moveSpeed * Time.deltaTime;
 
-      
         if (objectCount >= 1) MoveAndClamp(object1, movement);
         if (objectCount >= 2) MoveAndClamp(object2, movement);
         if (objectCount >= 3) MoveAndClamp(object3, movement);
