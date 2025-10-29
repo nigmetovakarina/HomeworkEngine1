@@ -16,6 +16,7 @@ public class MultiObjectController : MonoBehaviour
     public float minY = -5f;
     public float maxY = 5f;
 
+
     void Update()
     {
         float moveX = Input.GetAxis("Horizontal");
