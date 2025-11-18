@@ -4,6 +4,10 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
+    [SerializeField]
+    private CharacterData characterData;
+
+    
     public IHealthComponent HealthComponent { get; protected set; }
 
 

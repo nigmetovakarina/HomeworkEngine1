@@ -6,5 +6,9 @@ public class CharacterData : MonoBehaviour
 {
     [SerializeField]
     private float defaultSpeed;
+
+
+    public float DefaultSpeed => defaultSpeed;
+
 }
 
