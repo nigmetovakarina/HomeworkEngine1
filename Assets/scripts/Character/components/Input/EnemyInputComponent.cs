@@ -1,16 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyInputComponent : IInputComponent
 {
-    private CharacterData characterTarget;
-    private Transform transform;
+    private Character characterTarget;
+    private Transform selfTransform;
+
+    public EnemyInputComponent(Transform selfTransform, Character characterTarget)
+    {
+        this.selfTransform = selfTransform;
+        this.characterTarget = characterTarget;
+    }
+
     public Vector3 GetDirection()
     {
-        Vector3 movedirection = characterTarget.transform.position - transform.position;
-        movedirection.Normalize();
+        if (characterTarget == null || characterTarget.transform == null || selfTransform == null)
+        {
+            // На проде лучше логировать, а не падать
+            return Vector3.zero;
+        }
 
-        return movedirection;
+        Vector3 moveDirection = characterTarget.transform.position - selfTransform.position;
+        return moveDirection.normalized;
     }
 }
