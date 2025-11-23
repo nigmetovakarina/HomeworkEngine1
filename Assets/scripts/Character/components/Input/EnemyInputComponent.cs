@@ -15,7 +15,6 @@ public class EnemyInputComponent : IInputComponent
     {
         if (characterTarget == null || characterTarget.transform == null || selfTransform == null)
         {
-            // На проде лучше логировать, а не падать
             return Vector3.zero;
         }
 

@@ -11,7 +11,6 @@ public class EnemyCharacter : Character
         base.Initialize();
         HealthComponent = new HealthComponent();
 
-        // ВАЖНО: characterTarget должен быть проставлен в инспекторе
         InputComponent = new EnemyInputComponent(transform, characterTarget);
     }
 
