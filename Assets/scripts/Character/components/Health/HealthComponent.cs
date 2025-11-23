@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class HealthComponent : IHealthComponent
 {
-    private float health = 25;
-    public float maxHealth = 100;
+    private float health = 2000000000;
+    public float maxHealth = 10000;
     public float Health
     {
         get
@@ -29,6 +29,6 @@ public class HealthComponent : IHealthComponent
     }
 
     private void SetDeath() {
-        Debug.LogError("слеп");
+        Debug.LogError("wasted");
     }
 }

@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class PlayerCharacter : Character
 {
+
+    private IInputComponent _inputComponent;
     public override void Initialize()
     {
         base.Initialize();
         HealthComponent = new HealthComponent();
+        InputComponent = new PlayerInputComponent();
     }
 
     protected override void Update()
     {
         if (HealthComponent == null || HealthComponent.Health <= 0)
             return;
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
 
 
-        MovementComponent.Move(moveDirection);
-        MovementComponent.Rotation(moveDirection);
+        MovementComponent.Move(InputComponent.GetDirection());
+        MovementComponent.Rotation(InputComponent.GetDirection());
     }
 }

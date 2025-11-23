@@ -14,15 +14,24 @@ public abstract class Character : MonoBehaviour
 
     public IAttackComponent AttackComponent { get; protected set; }
 
+    public IInputComponent InputComponent { get; protected set; }
+
+    public CharacterData CharacterData => characterData;
+
+    public object CharacterTransform { get; internal set; }
+
+    protected IInputComponent _InputComponent;
+
+
+    
 
     public virtual void Initialize()
     {
     MovementComponent = new DefaultMovementComponent();
     MovementComponent.Initialize(characterData);
-        AttackComponent = new AttackComponent();
-        AttackComponent.Initialize(characterData);  
-
-}
+    AttackComponent = new AttackComponent();
+    AttackComponent.Initialize(characterData);
+    }
     private void Start()
     {
         Initialize();

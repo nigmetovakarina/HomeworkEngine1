@@ -14,7 +14,7 @@ public class EnemyCharacter : Character
     {
         base.Initialize();
         HealthComponent = new HealthComponent();
-
+        InputComponent = new EnemyInputComponent();
 
     }
 
@@ -25,10 +25,7 @@ public class EnemyCharacter : Character
         Debug.Log(HealthComponent.Health);
         if (HealthComponent == null || HealthComponent.Health <= 0)
             return;
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
-
+     
 
         switch (aiState)
         {
@@ -38,11 +35,10 @@ public class EnemyCharacter : Character
 
 
             case Aistate.MoveToTarget:
-                Vector3 movedirection = characterTarget.transform.position - transform.position;
-                movedirection.Normalize();
+                
 
-                MovementComponent.Move(movedirection);
-                MovementComponent.Rotation(movedirection);
+                MovementComponent.Move(InputComponent.GetDirection());
+                MovementComponent.Rotation(InputComponent.GetDirection());
 
                 AttackComponent.MakeDamage(characterTarget);
 
